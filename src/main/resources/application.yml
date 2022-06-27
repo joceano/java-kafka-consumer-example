@@ -7,8 +7,18 @@ spring:
       bootstrap-servers: 127.0.0.1:9092
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       group-id: group_id
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: 'com.joceano.kafkaconsumer.models.Pedido'
+            type:
+              mapping: 'com.joceano.kafkaproducer.models.Pedido:com.joceano.kafkaconsumer.models.Pedido'
+            trusted:
+              packages: 'com.joceano.kafkaproducer'
 
 topic:
   name:
