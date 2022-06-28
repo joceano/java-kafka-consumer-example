@@ -9,7 +9,7 @@ public class KafkaConsumerService {
 
     @KafkaListener(topics = "${topic.name.consumer}", groupId = "${spring.kafka.consumer.group-id}")
     public void consume(Pedido pedido){
-        System.out.println(pedido.getStatus().name());
+        System.out.println(pedido);
     }
 
 }
