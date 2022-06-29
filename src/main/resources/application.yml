@@ -1,30 +1,16 @@
 server:
   port: 8082
 
-spring:
-  kafka:
-    consumer:
-      bootstrap-servers: 127.0.0.1:9092
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      group-id: group_id
-      properties:
-        spring:
-          json:
-            value:
-              default:
-                type: 'com.joceano.kafkaconsumer.models.Pedido'
-            type:
-              mapping: 'com.joceano.kafkaproducer.models.Pedido:com.joceano.kafkaconsumer.models.Pedido'
-            trusted:
-              packages: 'com.joceano.kafkaproducer'
-
-topic:
-  name:
-    consumer: topic.test
-
-auto:
-  create:
-    topics:
-      enable: true
+kafka:
+  topic: 'topic.test'
+  group-id: 'group_id'
+  concurrency: 3
+  poll-timeout: 3000
+  server-config: 'localhost:9092'
+  dlt:
+    topic: 'topic.test.DLT'
+  retry:
+    initial-interval: 1000
+    multiplier: 3
+    max-interval: 10000
+    max-retries: 3
