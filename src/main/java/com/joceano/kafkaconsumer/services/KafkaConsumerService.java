@@ -14,7 +14,7 @@ public class KafkaConsumerService {
 
     @KafkaListener(topics = "${kafka.topic}", groupId = "${kafka.group-id}")
     public void consume(Pedido pedido){
-        LOGGER.info("Pedido: {}", pedido);
+        LOGGER.info("Pedido recebido: {}", pedido);
         throw new KafkaException("Exception for dead letter topic.");
     }
 
