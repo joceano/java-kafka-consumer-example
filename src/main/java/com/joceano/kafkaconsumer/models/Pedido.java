@@ -2,6 +2,7 @@ package com.joceano.kafkaconsumer.models;
 
 import com.joceano.kafkaconsumer.models.enums.PedidoStatus;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Pedido {
 
@@ -9,6 +10,7 @@ public class Pedido {
     private String descricao;
     private BigDecimal valor;
     private PedidoStatus status;
+    private List<Item> itens;
 
     public Long getId() {
         return id;
@@ -42,6 +44,14 @@ public class Pedido {
         this.status = status;
     }
 
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
+
     @Override
     public String toString() {
         return "Pedido{" +
@@ -49,6 +59,7 @@ public class Pedido {
             ", descricao='" + descricao + '\'' +
             ", valor=" + valor +
             ", status=" + status +
+            ", itens=" + itens +
             '}';
     }
 }
